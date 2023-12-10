@@ -16,8 +16,8 @@ namespace CodeGuardian.INFRA
 
         public DbSet<Application> Applications { get; set; }
         public DbSet<License> Licenses { get; set; }
-        public DbSet<UserPermission> Permissions { get; set; }
-        public DbSet<Permission> UserPermissions { get; set; }
+        public DbSet<UserPermission> UserPermissions { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
         public DbSet<User> Users { get; set; }
 
         public DbSet<Administrator> Administrators { get; set; }

@@ -10,10 +10,17 @@ string value = Environment.GetEnvironmentVariable("env");
 
 builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter())).AddJsonOptions(option => option.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddScoped<IAdministratorService, AdministratorService>();
 builder.Services.AddScoped<IAdministratorRepo, AdministratorRepo>();
+builder.Services.AddScoped<IApplicationService, ApplicationService>();
+builder.Services.AddScoped<IApplicationRepo, ApplicationRepo>();
+builder.Services.AddScoped<IPermissionService, PermissionService>();
+builder.Services.AddScoped<IPermissionRepo, PermissionRepo>();
+builder.Services.AddScoped<ILicenceService, LicenceService>();
+builder.Services.AddScoped<ILicenceRepo, LicenceRepo>();
 
 if (value == "stage")
 {
