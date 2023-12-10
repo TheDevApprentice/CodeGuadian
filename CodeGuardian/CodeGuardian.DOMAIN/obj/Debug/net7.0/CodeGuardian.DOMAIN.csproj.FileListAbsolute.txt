@@ -1,0 +1,15 @@
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\bin\Debug\net7.0\CodeGuardian.DOMAIN.deps.json
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\bin\Debug\net7.0\CodeGuardian.DOMAIN.runtimeconfig.json
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\bin\Debug\net7.0\CodeGuardian.DOMAIN.dll
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\bin\Debug\net7.0\CodeGuardian.DOMAIN.pdb
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\obj\Debug\net7.0\CodeGuardian.DOMAIN.csproj.AssemblyReference.cache
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\obj\Debug\net7.0\CodeGuardian.DOMAIN.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\obj\Debug\net7.0\CodeGuardian.DOMAIN.AssemblyInfoInputs.cache
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\obj\Debug\net7.0\CodeGuardian.DOMAIN.AssemblyInfo.cs
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\obj\Debug\net7.0\CodeGuardian.DOMAIN.csproj.CoreCompileInputs.cache
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\obj\Debug\net7.0\CodeGuardian.DOMAIN.sourcelink.json
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\obj\Debug\net7.0\CodeGuardian.DOMAIN.dll
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\obj\Debug\net7.0\refint\CodeGuardian.DOMAIN.dll
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\obj\Debug\net7.0\CodeGuardian.DOMAIN.pdb
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\obj\Debug\net7.0\CodeGuardian.DOMAIN.genruntimeconfig.cache
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian.DOMAIN\obj\Debug\net7.0\ref\CodeGuardian.DOMAIN.dll

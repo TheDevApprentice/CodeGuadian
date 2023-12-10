@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "9cY8uqBCDihfWvxEON3QB20PRezW2pEelzxZ7/OBq8w=",
+  "Source": "CodeGuardian.API",
+  "BasePath": "_content/CodeGuardian.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

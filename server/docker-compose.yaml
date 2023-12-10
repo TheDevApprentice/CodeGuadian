@@ -1,0 +1,11 @@
+#docker-compose
+
+version: '3.8'
+
+services:
+  ubuntu-server:
+    image: server:latest
+    container_name: my-ubuntu-server
+    command: /bin/bash
+    stdin_open: true
+    tty: true

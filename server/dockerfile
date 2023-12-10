@@ -1,0 +1,16 @@
+# dockerfile
+
+# Utiliser l'image officielle d'Ubuntu
+FROM ubuntu:latest
+
+# Optionnel : Mettre à jour les paquets et installer des outils supplémentaires
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y \
+    nano \
+    curl \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+# Commande par défaut pour démarrer le conteneur
+CMD ["bash"]
