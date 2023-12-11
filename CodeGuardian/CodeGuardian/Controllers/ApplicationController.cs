@@ -18,7 +18,52 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpGet("applications")]
-        public IActionResult GetAllUsers()
+        public IActionResult GetAllApplication()
+        {
+            try
+            {
+                List<Application> users = _applicationService.GetAllApplication();
+
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPost("application")]
+        public IActionResult AddApplication()
+        {
+            try
+            {
+                List<Application> users = _applicationService.GetAllApplication();
+
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPut("application")]
+        public IActionResult ModifyApplication()
+        {
+            try
+            {
+                List<Application> users = _applicationService.GetAllApplication();
+
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpDelete("application")]
+        public IActionResult DeleteApplication()
         {
             try
             {

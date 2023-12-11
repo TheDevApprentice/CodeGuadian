@@ -1,9 +1,5 @@
-﻿using CodeGuardian.API.DTO;
-using CodeGuardian.DOMAINE.Entity;
-using CodeGuardian.DOMAINE.Interfaces;
-using CodeGuardian.INFRA;
+﻿using CodeGuardian.DOMAINE.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel;
 using License = CodeGuardian.DOMAINE.Entity.License;
 
 namespace CodeGuardian.API.Controllers
@@ -20,7 +16,52 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpGet("licences")]
-        public IActionResult GetAllUsers()
+        public IActionResult GetAllLicences()
+        {
+            try
+            {
+                List<License> users = _licenceService.GetAllLicenses();
+
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPost("licence")]
+        public IActionResult AddLicence()
+        {
+            try
+            {
+                List<License> users = _licenceService.GetAllLicenses();
+
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPut("licence")]
+        public IActionResult ModifyLicence()
+        {
+            try
+            {
+                List<License> users = _licenceService.GetAllLicenses();
+
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpDelete("licence")]
+        public IActionResult DeleteLicence()
         {
             try
             {

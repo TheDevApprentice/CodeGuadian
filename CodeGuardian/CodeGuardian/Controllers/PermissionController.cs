@@ -16,7 +16,52 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpGet("permissions")]
-        public IActionResult GetAllUsers()
+        public IActionResult GetAlPermissions()
+        {
+            try
+            {
+                List<Permission> users = _permissionService.GetAlPermissions();
+
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPost("permission")]
+        public IActionResult AddPermission()
+        {
+            try
+            {
+                List<Permission> users = _permissionService.GetAlPermissions();
+
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPut("permission")]
+        public IActionResult ModifyPermission()
+        {
+            try
+            {
+                List<Permission> users = _permissionService.GetAlPermissions();
+
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpDelete("permission")]
+        public IActionResult DeletePermission()
         {
             try
             {

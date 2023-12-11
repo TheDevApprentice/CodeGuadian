@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace CodeGuardian.API.Controllers;
 
-[Route("api/[Controller]")]
+[Route("api/[controller]")]
 [ApiController]
 public class VersionController : ControllerBase
 {
