@@ -7,7 +7,6 @@ public class ApplicationService : IApplicationService
 {
     private IApplicationRepo _applicationRepo;
 
-    // Initialize the user repository to access the methods
     public ApplicationService(IApplicationRepo applicationRepo)
     {
         this._applicationRepo = applicationRepo;
@@ -20,6 +19,6 @@ public class ApplicationService : IApplicationService
 
     Application IApplicationService.GetApplicationById(int id)
     {
-        return _applicationRepo.GetApplicationById(id); 
+        return _applicationRepo.GetApplicationById(id);
     }
 }

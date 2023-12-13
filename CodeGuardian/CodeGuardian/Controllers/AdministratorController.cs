@@ -1,7 +1,7 @@
 ﻿using CodeGuardian.API.DTO;
 using CodeGuardian.DOMAINE.Entity;
 using CodeGuardian.DOMAINE.Interfaces;
-using CodeGuardian.DOMAINE.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodeGuardian.API.Controllers
@@ -31,6 +31,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpGet("users")]
+        [Authorize(Roles = "Admin")]
         public IActionResult GetAllUserss()
         {
             try
@@ -46,6 +47,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpGet("user/name")]
+        [Authorize(Roles = "Admin")]
         public IActionResult GetUserByNames([FromQuery] string username)
         {
             try
@@ -61,6 +63,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpPost("user")]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddAnUser([FromBody] UserDTO userToAdd)
         {
             try
@@ -81,6 +84,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpGet("applications")]
+        [Authorize(Roles = "Admin")]
         public IActionResult GetAllApplications()
         {
             try
@@ -96,6 +100,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpPost("application")]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddApplication()
         {
             try
@@ -111,6 +116,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpPut("application")]
+        [Authorize(Roles = "Admin")]
         public IActionResult ModifyApplication()
         {
             try
@@ -126,6 +132,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpDelete("application")]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteApplication()
         {
             try
@@ -141,6 +148,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpGet("licences")]
+        [Authorize(Roles = "Admin")]
         public IActionResult GetAllLicences()
         {
             try
@@ -156,6 +164,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpPost("licence")]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddLicence()
         {
             try
@@ -171,6 +180,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpPut("licence")]
+        [Authorize(Roles = "Admin")]
         public IActionResult ModifyLicence()
         {
             try
@@ -186,6 +196,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpDelete("licence")]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteLicence()
         {
             try
@@ -201,6 +212,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpGet("permissions")]
+        [Authorize(Roles = "Admin")]
         public IActionResult GetAlPermissions()
         {
             try
@@ -216,6 +228,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpPost("permission")]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddPermission()
         {
             try
@@ -231,6 +244,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpPut("permission")]
+        [Authorize(Roles = "Admin")]
         public IActionResult ModifyPermission()
         {
             try
@@ -246,6 +260,7 @@ namespace CodeGuardian.API.Controllers
         }
 
         [HttpDelete("permission")]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeletePermission()
         {
             try

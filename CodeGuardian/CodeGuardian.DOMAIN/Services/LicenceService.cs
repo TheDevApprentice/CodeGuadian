@@ -7,7 +7,6 @@ public class LicenceService : ILicenceService
 {
     private ILicenceRepo _licenceRepo;
 
-    // Initialize the user repository to access the methods
     public LicenceService(ILicenceRepo licenceRepo)
     {
         this._licenceRepo = licenceRepo;
@@ -20,6 +19,6 @@ public class LicenceService : ILicenceService
 
     License ILicenceService.GetLicenseById(int licenceId)
     {
-        return _licenceRepo.GetLicenseById(licenceId); 
+        return _licenceRepo.GetLicenseById(licenceId);
     }
 }

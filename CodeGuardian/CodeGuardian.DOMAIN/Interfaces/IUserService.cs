@@ -9,4 +9,8 @@ public interface IUserService
     User GetAnUserByName(string username);
 
     List<User> GetAllUsers();
+
+    List<Application> GetUserApplications(int userId);
+
+    List<Application> CheckUserApplicationLicenceKey(int userId, int appid, string licenseKey);
 }

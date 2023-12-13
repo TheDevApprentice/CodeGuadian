@@ -12,9 +12,9 @@ namespace CodeGuardian.DOMAINE.Services
         private ILicenceRepo _licenceRepo;
         private IPermissionRepo _permissionRepo;
 
-        public AdministratorService(IAdministratorRepo administratorRepo, 
-            IApplicationRepo applicationRepo, 
-            ILicenceRepo licenceRepo, 
+        public AdministratorService(IAdministratorRepo administratorRepo,
+            IApplicationRepo applicationRepo,
+            ILicenceRepo licenceRepo,
             IPermissionRepo permissionRepo,
             IUserRepo userRepo)
         {

@@ -10,6 +10,7 @@ C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuar
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\FluentValidation.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Humanizer.dll
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll

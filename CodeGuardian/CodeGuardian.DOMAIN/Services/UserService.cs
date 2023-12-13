@@ -7,7 +7,6 @@ public class UserService : IUserService
 {
     private IUserRepo _repoUser;
 
-    // Initialize the user repository to access the methods
     public UserService(IUserRepo userRepo)
     {
         this._repoUser = userRepo;
@@ -36,5 +35,19 @@ public class UserService : IUserService
         }
 
         return _repoUser.GetUserByID((int)id);
+    }
+    public List<Application> GetUserApplications(int userId)
+    {
+        if (_repoUser.GetUserApplication((int)userId) == null)
+        {
+            throw new ArgumentException("Please enter a valid id for the user");
+        }
+
+        return _repoUser.GetUserApplication((int)userId);
+    }
+
+    List<Application> IUserService.CheckUserApplicationLicenceKey(int userId, int appid, string licenseKey)
+    {
+        return _repoUser.CheckUserApplicationLicenceKey((int)userId, appid, licenseKey);
     }
 }

@@ -7,7 +7,6 @@ public class PermissionService : IPermissionService
 {
     private IPermissionRepo _permissionRepo;
 
-    // Initialize the user repository to access the methods
     public PermissionService(IPermissionRepo permissionRepo)
     {
         this._permissionRepo = permissionRepo;
@@ -15,11 +14,11 @@ public class PermissionService : IPermissionService
 
     List<Permission> IPermissionService.GetAlPermissions()
     {
-       return _permissionRepo.GetAlPermissions();
+        return _permissionRepo.GetAlPermissions();
     }
 
     Permission IPermissionService.GetPermissionById(int permissionId)
     {
-       return  _permissionRepo.GetPermissionById(permissionId);
+        return _permissionRepo.GetPermissionById(permissionId);
     }
 }

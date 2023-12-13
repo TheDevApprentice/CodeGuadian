@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "F4S2SMDEiuwWRiBJiFj5fQ6IIpzTOU/xObmMW6V1okOgcH7F3ITE7TkMQzEkMOGtaCriaXVryppUkTV5EEZLvg==",
+  "dgSpecHash": "rU1eu2N2PZfRWzI+yXm4ax7BSo2hFW+Q2aF4jJ7geC8ue7H7fHqimGQAxmV4yBBlJhYXHZ69d/ZCRzDlj08Msw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Utilisateur\\Documents\\ProjetsPerso\\C#\\CodeGuadian\\CodeGuardian\\CodeGuardian\\CodeGuardian.API.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Utilisateur\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\Utilisateur\\.nuget\\packages\\fluentvalidation\\11.8.1\\fluentvalidation.11.8.1.nupkg.sha512",
     "C:\\Users\\Utilisateur\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Utilisateur\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.14\\microsoft.aspnetcore.authentication.jwtbearer.7.0.14.nupkg.sha512",
     "C:\\Users\\Utilisateur\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Utilisateur\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Utilisateur\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",

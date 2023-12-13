@@ -7,6 +7,8 @@ public class UserPermission
     [JsonIgnore]
     public int UserId { get; set; }
 
+    public Guid userPermissionUuid { get; set; }
+
     public int PermissionId { get; set; }
 
     [JsonIgnore]

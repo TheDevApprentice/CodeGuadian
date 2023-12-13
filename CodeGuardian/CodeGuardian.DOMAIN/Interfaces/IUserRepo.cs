@@ -8,4 +8,8 @@ public interface IUserRepo
     User GetAnUserByName(string employeeName);
 
     List<User> GetAllUsers();
+
+    List<Application> GetUserApplication(int userId);
+
+    List<Application> CheckUserApplicationLicenceKey(int userId, int appid, string licenseKey);
 }
