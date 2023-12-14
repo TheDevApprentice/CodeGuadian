@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CodeGuardian.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20bbda8ecb04c870c028e5b1afb76dc9b5b4414c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+faa14e0fe803b0f1c30cf05219f81f2ec962a6d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("CodeGuardian.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CodeGuardian.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
