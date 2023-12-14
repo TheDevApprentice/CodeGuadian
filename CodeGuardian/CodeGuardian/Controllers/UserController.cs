@@ -20,6 +20,10 @@ namespace CodeGuardian.API.Controllers
             this._applicationService = applicationService;
         }
 
+        /// <summary>
+        /// Route to get all users
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("users")]
         [Authorize(Roles = "Admin,User")]
         public IActionResult GetAllUsers()
@@ -35,6 +39,11 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Route to get user by id
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpGet("user/{userId}")]
         [Authorize(Roles = "Admin,User")]
         public IActionResult GetUserById(int userId)
@@ -50,6 +59,11 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Route to get all user applications
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpGet("user/{userId}/applications")]
         [Authorize(Roles = "Admin,User")]
         public IActionResult GetUserApplications(int userId)
@@ -65,9 +79,15 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Route to allow an user to register to an app
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="appid"></param>
+        /// <returns></returns>
         [HttpPost("user/{userId}/application/register/{appid}")]
         [Authorize(Roles = "Admin,User")]
-        public IActionResult RegisterForApp(int userId, int appid)
+        public IActionResult RegisterForApp(int userId, Guid appUuid)
         {
             try
             {
@@ -80,6 +100,13 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Route to verify the user application licence key
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="appid"></param>
+        /// <param name="licenseKey"></param>
+        /// <returns></returns>
         [HttpGet("user/{userId}/application/{appid}/verify/licencekey/{licenseKey}")]
         [Authorize(Roles = "Admin,User")]
         public IActionResult CheckUserApplicationLicenceKey(int userId, int appid, string licenseKey)

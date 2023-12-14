@@ -22,6 +22,7 @@ C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuar
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.Identity.Client.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
@@ -35,6 +36,7 @@ C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuar
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\MySqlConnector.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Utilisateur\Documents\ProjetsPerso\C#\CodeGuadian\CodeGuardian\CodeGuardian\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll

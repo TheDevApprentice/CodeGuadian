@@ -14,11 +14,14 @@ public class VersionController : ControllerBase
         _configuration = configuration;
     }
 
+    /// <summary>
+    /// Route to obtain the api version
+    /// </summary>
+    /// <returns></returns>
     [HttpGet("getversion")]
     public string GetVersion()
     {
         Version version = Assembly.GetEntryAssembly().GetName().Version;
-
         return version.ToString();
     }
 }

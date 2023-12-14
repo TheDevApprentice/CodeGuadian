@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CodeGuardian.INFRA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6b4aabdaaf6a130f8d781a5ba80f0a032199e89")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aba24b9ecf4b5cb05b3e2d28d6b40b91ba2b3849")]
 [assembly: System.Reflection.AssemblyProductAttribute("CodeGuardian.INFRA")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CodeGuardian.INFRA")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

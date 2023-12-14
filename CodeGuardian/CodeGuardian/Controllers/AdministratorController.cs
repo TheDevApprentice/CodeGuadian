@@ -30,9 +30,13 @@ namespace CodeGuardian.API.Controllers
             this._licenceService = licenceService;
         }
 
+        /// <summary>
+        /// Admin route to get all users
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("users")]
         [Authorize(Roles = "Admin")]
-        public IActionResult GetAllUserss()
+        public IActionResult GetAllUsers()
         {
             try
             {
@@ -46,6 +50,11 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Admin route to get all users by name
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         [HttpGet("user/name")]
         [Authorize(Roles = "Admin")]
         public IActionResult GetUserByNames([FromQuery] string username)
@@ -62,6 +71,11 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Admin route to add an user
+        /// </summary>
+        /// <param name="userToAdd"></param>
+        /// <returns></returns>
         [HttpPost("user")]
         [Authorize(Roles = "Admin")]
         public IActionResult AddAnUser([FromBody] UserDTO userToAdd)
@@ -83,6 +97,10 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Admin route to get all applications
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("applications")]
         [Authorize(Roles = "Admin")]
         public IActionResult GetAllApplications()
@@ -99,15 +117,18 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("application")]
         [Authorize(Roles = "Admin")]
         public IActionResult AddApplication()
         {
             try
             {
-                List<Application> users = _applicationService.GetAllApplication();
 
-                return Ok(users);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -115,15 +136,18 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("application")]
         [Authorize(Roles = "Admin")]
         public IActionResult ModifyApplication()
         {
             try
             {
-                List<Application> users = _applicationService.GetAllApplication();
 
-                return Ok(users);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -131,15 +155,18 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("application")]
         [Authorize(Roles = "Admin")]
         public IActionResult DeleteApplication()
         {
             try
             {
-                List<Application> users = _applicationService.GetAllApplication();
 
-                return Ok(users);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -147,15 +174,19 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("licences")]
         [Authorize(Roles = "Admin")]
         public IActionResult GetAllLicences()
         {
             try
             {
-                List<License> users = _licenceService.GetAllLicenses();
+                List<License> licences = _licenceService.GetAllLicenses();
 
-                return Ok(users);
+                return Ok(licences);
             }
             catch (Exception e)
             {
@@ -163,15 +194,18 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("licence")]
         [Authorize(Roles = "Admin")]
         public IActionResult AddLicence()
         {
             try
             {
-                List<License> users = _licenceService.GetAllLicenses();
 
-                return Ok(users);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -179,15 +213,18 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("licence")]
         [Authorize(Roles = "Admin")]
         public IActionResult ModifyLicence()
         {
             try
             {
-                List<License> users = _licenceService.GetAllLicenses();
 
-                return Ok(users);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -195,15 +232,18 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("licence")]
         [Authorize(Roles = "Admin")]
         public IActionResult DeleteLicence()
         {
             try
             {
-                List<License> users = _licenceService.GetAllLicenses();
 
-                return Ok(users);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -211,15 +251,19 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("permissions")]
         [Authorize(Roles = "Admin")]
         public IActionResult GetAlPermissions()
         {
             try
             {
-                List<Permission> users = _permissionService.GetAlPermissions();
+                List<Permission> permissions = _permissionService.GetAlPermissions();
 
-                return Ok(users);
+                return Ok(permissions);
             }
             catch (Exception e)
             {
@@ -227,15 +271,18 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("permission")]
         [Authorize(Roles = "Admin")]
         public IActionResult AddPermission()
         {
             try
             {
-                List<Permission> users = _permissionService.GetAlPermissions();
 
-                return Ok(users);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -243,15 +290,18 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("permission")]
         [Authorize(Roles = "Admin")]
         public IActionResult ModifyPermission()
         {
             try
             {
-                List<Permission> users = _permissionService.GetAlPermissions();
 
-                return Ok(users);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -259,15 +309,18 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("permission")]
         [Authorize(Roles = "Admin")]
         public IActionResult DeletePermission()
         {
             try
             {
-                List<Permission> users = _permissionService.GetAlPermissions();
 
-                return Ok(users);
+                return Ok();
             }
             catch (Exception e)
             {

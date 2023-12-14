@@ -49,11 +49,15 @@ public class AdministratorRepo : IAdministratorRepo
 
     User IAdministratorRepo.GetAnUserByName(string username)
     {
+#pragma warning disable CS8600 // Conversion de littéral ayant une valeur null ou d'une éventuelle valeur null en type non-nullable.
         User user = _dbCodeGuardian.Users.FirstOrDefault(user => user.FirstName == username /*&& user.Active*/);
+#pragma warning restore CS8600 // Conversion de littéral ayant une valeur null ou d'une éventuelle valeur null en type non-nullable.
 
         if (user == null)
         {
+#pragma warning disable CS8603 // Existence possible d'un retour de référence null.
             return null;
+#pragma warning restore CS8603 // Existence possible d'un retour de référence null.
         }
 
         return user;
@@ -61,21 +65,29 @@ public class AdministratorRepo : IAdministratorRepo
 
     Application IAdministratorRepo.GetApplicationById(int id)
     {
+#pragma warning disable CS8603 // Existence possible d'un retour de référence null.
         return _dbCodeGuardian.Applications.FirstOrDefault(licence => licence.Id == id);
+#pragma warning restore CS8603 // Existence possible d'un retour de référence null.
     }
 
     License IAdministratorRepo.GetLicenseById(int licenceId)
     {
+#pragma warning disable CS8603 // Existence possible d'un retour de référence null.
         return _dbCodeGuardian.Licenses.FirstOrDefault(licence => licence.Id == licenceId);
+#pragma warning restore CS8603 // Existence possible d'un retour de référence null.
     }
 
     Permission IAdministratorRepo.GetPermissionById(int permissionId)
     {
+#pragma warning disable CS8603 // Existence possible d'un retour de référence null.
         return _dbCodeGuardian.Permissions.FirstOrDefault(licence => licence.Id == permissionId);
+#pragma warning restore CS8603 // Existence possible d'un retour de référence null.
     }
 
     User IAdministratorRepo.GetUserByID(int id)
     {
+#pragma warning disable CS8603 // Existence possible d'un retour de référence null.
         return _dbCodeGuardian.Users.FirstOrDefault(user => user.Id == id);
+#pragma warning restore CS8603 // Existence possible d'un retour de référence null.
     }
 }

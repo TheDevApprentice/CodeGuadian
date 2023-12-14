@@ -13,6 +13,9 @@ using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 string value = Environment.GetEnvironmentVariable("env");
 
+Auth auth = new Auth();
+var result = auth.ExtractConfiguration($"SELECT value FROM SecurityConfiguration WHERE name = 'secretKey'");
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -24,7 +27,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
             ValidIssuer = "your-issuer",
             ValidAudience = "your-audience",
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your-secret-key-with-at-least-128-bits"))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(result))
         };
     });
 
@@ -64,7 +67,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     // ...
-
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "CodeGuardianTestUI", Description = "Descritpiotn de l'api" ,Version = "v1" });
+   
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "JWT Authorization header using the Bearer scheme",
@@ -98,6 +102,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "CodeGuardianTestUI V1");
     });
 }
 

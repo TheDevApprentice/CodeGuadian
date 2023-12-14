@@ -19,7 +19,9 @@ public class ApplicationRepo : IApplicationRepo
 
     Application IApplicationRepo.GetApplicationById(int id)
     {
+#pragma warning disable CS8603 // Existence possible d'un retour de référence null.
         return _dbCodeGuardian.Applications.FirstOrDefault(licence => licence.Id == id);
+#pragma warning restore CS8603 // Existence possible d'un retour de référence null.
 
     }
 }

@@ -1,9 +1,4 @@
-using CodeGuardian.DOMAINE.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace CodeGuardian.API.Controllers
 {
@@ -11,44 +6,62 @@ namespace CodeGuardian.API.Controllers
     [ApiController]
     public class AuthController : Controller
     {
-        private readonly IUserService _userService;
-        private readonly ILicenceService _licenceService;
-        private readonly IApplicationService _applicationService;
+        private readonly Auth _auth;
 
-        public AuthController(IUserService userService, ILicenceService licenceService, IApplicationService applicationService)
+        public AuthController()
         {
-            this._userService = userService;
-            this._licenceService = licenceService;
-            this._applicationService = applicationService;
+            this._auth = new Auth();
         }
 
-        [HttpPost("createtoken")]
-        public async Task<IActionResult> CreateToken(string login)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        [HttpPost("createtokenuser")]
+        public async Task<IActionResult> CreateTokenUser(string? login)
         {
-            var token = GenerateJwtToken(login);
+            if (login is null)
+            {
+                return BadRequest("Le paramètre 'login' ne peut pas être null.");
+            }
 
+            var token = _auth.GenerateJwtToken(login, "User");
             return Ok(new { Token = token });
         }
 
-        private string GenerateJwtToken(string user)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        [HttpPost("createtokenadmin")]
+        public async Task<IActionResult> CreateTokenAdmin(string? login)
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("your-secret-key-with-at-least-128-bits");
-            var tokenDescriptor = new SecurityTokenDescriptor
+            if (login is null)
             {
-                Audience = "your-audience",
-                Issuer = "your-issuer",
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user),
-                    new Claim(ClaimTypes.Role, "User"),
+                return BadRequest("Le paramètre 'login' ne peut pas être null.");
+            }
 
-                }),
-                Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            var token = _auth.GenerateJwtToken(login, "Admin");
+            return Ok(new { Token = token });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        [HttpPost("createtokenusertemp")]
+        public async Task<IActionResult> CreateTokenTemp(string? login)
+        {
+            if (login is null)
+            {
+                return BadRequest("Le paramètre 'login' ne peut pas être null.");
+            }
+
+            var token = _auth.GenerateJwtToken(login, "Temp");
+            return Ok(new { Token = token });
         }
     }
 }

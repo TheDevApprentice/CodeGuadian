@@ -5,12 +5,20 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+# Définir le réseau Docker pour permettre l'accès externe
+ARG DOCKER_NETWORK=my_network
+ENV DOCKER_NETWORK=${DOCKER_NETWORK}
+
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["CodeGuardian.csproj", "."]
 RUN dotnet restore "./././CodeGuardian.csproj"
 COPY . .
+
+# Mettre en place le réseau Docker
+RUN echo "network=${DOCKER_NETWORK}" > /app/network_config
+
 WORKDIR "/src/."
 RUN dotnet build "./CodeGuardian.csproj" -c $BUILD_CONFIGURATION -o /app/build
 

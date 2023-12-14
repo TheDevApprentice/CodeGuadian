@@ -1,4 +1,5 @@
 using CodeGuardian.API.DTO;
+using CodeGuardian.DOMAINE.Authentification;
 using CodeGuardian.DOMAINE.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,18 +11,20 @@ namespace CodeGuardian.API.Controllers
     public class UserAccountController : Controller
     {
         private readonly IUserService _userService;
-        private readonly ILicenceService _licenceService;
-        private readonly IApplicationService _applicationService;
-        private readonly Auth _auth;
+        private readonly IAuthService _auth;
 
-        public UserAccountController(IUserService userService, ILicenceService licenceService, IApplicationService applicationService)
+        public UserAccountController(IUserService userService, IAuthService authService)
         {
             this._userService = userService;
-            this._licenceService = licenceService;
-            this._applicationService = applicationService;
-            _auth = new Auth();
+            this._auth = authService;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         [HttpGet("user/account/connect/user/{email}/password/{password}")]
         public IActionResult Connect(string email, string password)
         {
@@ -37,14 +40,18 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         [Authorize(Roles = "Admin,User")]
         [HttpGet("user/account/disconnect/user/{email}/password/{password}")]
         public IActionResult Disconnect(string email, string password)
         {
             try
             {
-                //User user = _userService.Disconnect();
-                //_auth
 
                 return Ok();
             }
@@ -54,13 +61,16 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userDTO"></param>
+        /// <returns></returns>
         [HttpPost("user/account/create")]
         public IActionResult CreateUserAccount([FromBody] UserDTO userDTO)
         {
             try
             {
-                //User user = _userService.CreateUserAccount(userDTO);
-                //_auth.GenerateJwtTemporaryToken(userDTO)
 
                 return Ok();
             }
@@ -70,13 +80,17 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         [HttpGet("user/account/forgot/{email}")]
         public IActionResult UserForgotAccountCredentials(string email)
         {
             try
             {
-                //User userToFind = _userService.GetuserByID(userId);
-                //return Ok(userToFind);
+
                 return Ok();
             }
             catch (Exception e)
@@ -85,14 +99,20 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
+        /// <summary>
+        /// A route that allow verified user to recover their account
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="username"></param>
+        /// <param name="guid"></param>
+        /// <returns></returns>
         [HttpGet("user/account/Recover/{email}/{username}/uuid/{uuid}")]
         [Authorize(Roles = "Temp")]
         public IActionResult UserRecoverLostAccount(string email, string username, Guid guid)
         {
             try
             {
-                //User userToFind = _userService.GetuserByID(userId);
-                //return Ok(userToFind);
+
                 return Ok();
             }
             catch (Exception e)
@@ -102,13 +122,19 @@ namespace CodeGuardian.API.Controllers
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
         [Authorize(Roles = "Admin,User")]
         [HttpDelete("user/account/{userId}/email/{email}")]
         public IActionResult DeleteUserAccount(int userId, string email)
         {
             try
             {
-                //List<User> users = _userService.GetAllUsers();
+
                 return Ok();
             }
             catch (Exception e)

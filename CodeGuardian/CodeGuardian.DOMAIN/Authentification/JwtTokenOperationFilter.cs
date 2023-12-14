@@ -9,8 +9,8 @@ namespace CodeGuardian.API.Controllers
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
             var authAttributes = context.MethodInfo.DeclaringType.GetCustomAttributes(true)
-                .Union(context.MethodInfo.GetCustomAttributes(true))
-                .OfType<AuthorizeAttribute>();
+                                                                 .Union(context.MethodInfo.GetCustomAttributes(true))
+                                                                 .OfType<AuthorizeAttribute>();
 
             if (authAttributes.Any())
             {
@@ -18,22 +18,22 @@ namespace CodeGuardian.API.Controllers
                 operation.Responses.Add("403", new OpenApiResponse { Description = "Forbidden" });
 
                 operation.Security = new List<OpenApiSecurityRequirement>
-            {
-                new OpenApiSecurityRequirement
                 {
+                    new OpenApiSecurityRequirement
                     {
-                        new OpenApiSecurityScheme
                         {
-                            Reference = new OpenApiReference
+                            new OpenApiSecurityScheme
                             {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        new List<string>()
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "Bearer"
+                                }
+                            },
+                            new List<string>()
+                        }
                     }
-                }
-            };
+                };
             }
         }
     }

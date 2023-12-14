@@ -20,11 +20,15 @@ public class UserRepo : IUserRepo
 
     public User GetAnUserByName(string userName)
     {
+#pragma warning disable CS8600 // Conversion de littéral ayant une valeur null ou d'une éventuelle valeur null en type non-nullable.
         User user = _dbCodeGuardian.Users.FirstOrDefault(user => user.FirstName == userName /*&& user.Active*/);
+#pragma warning restore CS8600 // Conversion de littéral ayant une valeur null ou d'une éventuelle valeur null en type non-nullable.
 
         if (user == null)
         {
+#pragma warning disable CS8603 // Existence possible d'un retour de référence null.
             return null;
+#pragma warning restore CS8603 // Existence possible d'un retour de référence null.
         }
 
         return user;
@@ -32,7 +36,9 @@ public class UserRepo : IUserRepo
 
     User IUserRepo.GetUserByID(int id)
     {
+#pragma warning disable CS8603 // Existence possible d'un retour de référence null.
         return _dbCodeGuardian.Users.FirstOrDefault(user => user.Id == id);
+#pragma warning restore CS8603 // Existence possible d'un retour de référence null.
     }
 
     List<Application> IUserRepo.GetUserApplication(int userId)
@@ -49,7 +55,9 @@ public class UserRepo : IUserRepo
 
         if (user == null)
         {
+#pragma warning disable CS8603 // Existence possible d'un retour de référence null.
             return null;
+#pragma warning restore CS8603 // Existence possible d'un retour de référence null.
         }
 
         var userApplications = _dbCodeGuardian.UserApplications
