@@ -1,4 +1,5 @@
-using CodeGuardian.DOMAINE.Entity;
+using CodeGuardian.DOMAIN.Entity.Application;
+using CodeGuardian.DOMAIN.Entity.Users.Dev;
 using CodeGuardian.DOMAINE.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,13 +8,13 @@ namespace CodeGuardian.API.Controllers
 {
     [Route("api/")]
     [ApiController]
-    public class UserController : Controller
+    public class DevController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly IDevService _userService;
         private readonly ILicenceService _licenceService;
         private readonly IApplicationService _applicationService;
 
-        public UserController(IUserService userService, ILicenceService licenceService, IApplicationService applicationService)
+        public DevController(IDevService userService, ILicenceService licenceService, IApplicationService applicationService)
         {
             this._userService = userService;
             this._licenceService = licenceService;
@@ -30,7 +31,7 @@ namespace CodeGuardian.API.Controllers
         {
             try
             {
-                List<User> users = _userService.GetAllUsers();
+                List<Dev> users = _userService.GetAllUsers();
                 return Ok(users);
             }
             catch (Exception e)
@@ -50,7 +51,7 @@ namespace CodeGuardian.API.Controllers
         {
             try
             {
-                User userToFind = _userService.GetuserByID(userId);
+                Dev userToFind = _userService.GetuserByID(userId);
                 return Ok(userToFind);
             }
             catch (Exception e)

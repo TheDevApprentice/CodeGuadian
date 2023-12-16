@@ -14,7 +14,7 @@ namespace CodeGuardian.API.Controllers
 
         public string GenerateJwtToken(string user, string role, string audiance = "your-audience", string issuer = "your-issuer")
         {
-            string configuration = ExtractConfiguration("");
+            string configuration = ExtractConfiguration("select value from SecurityConfiguration where name = 'secretKey'");
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(configuration);
@@ -35,6 +35,31 @@ namespace CodeGuardian.API.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+
+        public string GenerateJwtTokenApplication(string applicationUuidEncrypted, string role, string audiance = "your-audience", string issuer = "your-issuer")
+        {
+            string configuration = ExtractConfiguration("select value from SecurityConfiguration where name = 'secretKey");
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(configuration);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Audience = audiance,
+                Issuer = issuer,
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, applicationUuidEncrypted),
+                    new Claim(ClaimTypes.Role, role),
+
+                }),
+                Expires = DateTime.UtcNow.AddHours(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+
 
         public DataTable DatabaseOperation(string query)
         {

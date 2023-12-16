@@ -1,4 +1,4 @@
-using CodeGuardian.DOMAINE.Entity;
+using CodeGuardian.DOMAIN.Entity.Users.Dev;
 
 namespace CodeGuardian.API.ApiCalls
 {
@@ -6,7 +6,7 @@ namespace CodeGuardian.API.ApiCalls
     {
         public static string GetControllerName()
         {
-            string controllerName = "api/" + nameof(User);
+            string controllerName = "api/" + nameof(Dev);
             return controllerName;
         }
 

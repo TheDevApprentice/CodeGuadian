@@ -1,3 +1,4 @@
+using CodeGuardian.DOMAIN.Entity.Application;
 using System.Text.Json.Serialization;
 
 namespace CodeGuardian.DOMAINE.Entity;
@@ -9,17 +10,12 @@ public class License
 
     public Guid Uuid { get; set; }
 
-#pragma warning disable CS8618 // Un champ non-nullable doit contenir une valeur non-null lors de la fermeture du constructeur. Envisagez de déclarer le champ comme nullable.
-    public string Status { get; set; }
-#pragma warning restore CS8618 // Un champ non-nullable doit contenir une valeur non-null lors de la fermeture du constructeur. Envisagez de déclarer le champ comme nullable.
+    public string Status { get; set; } = "Inactive";
 
-#pragma warning disable CS8618 // Un champ non-nullable doit contenir une valeur non-null lors de la fermeture du constructeur. Envisagez de déclarer le champ comme nullable.
-    public string Key { get; set; }
-#pragma warning restore CS8618 // Un champ non-nullable doit contenir une valeur non-null lors de la fermeture du constructeur. Envisagez de déclarer le champ comme nullable.
+    public string KeyHash { get; set; }
 
     public int ApplicationId { get; set; }
 
-#pragma warning disable CS8618 // Un champ non-nullable doit contenir une valeur non-null lors de la fermeture du constructeur. Envisagez de déclarer le champ comme nullable.
+    [JsonIgnore]
     public Application Application { get; set; }
-#pragma warning restore CS8618 // Un champ non-nullable doit contenir une valeur non-null lors de la fermeture du constructeur. Envisagez de déclarer le champ comme nullable.
 }

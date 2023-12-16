@@ -1,23 +1,25 @@
+using CodeGuardian.DOMAIN.Entity.Application;
+using CodeGuardian.DOMAIN.Entity.Users.Dev;
 using CodeGuardian.DOMAINE.Entity;
 namespace CodeGuardian.DOMAINE.Interfaces;
 
 public interface IAdministratorService
 {
-    User AddAnuser(User userToAdd);
+    Dev AddAnUser(Dev userToAdd);
 
-    User GetUserByID(int id);
+    Dev GetUserByID(int id);
 
-    User GetAnUserByName(string employeeName);
+    Dev GetAnUserByName(string employeeName);
 
-    List<User> GetAllUsers();
+    List<Dev> GetAllUsers();
 
     List<Application> GetAllApplication();
 
-    Application GetApplicationById(int id);
+    Application GetApplicationById(Guid id);
 
     List<License> GetAllLicenses();
 
-    License GetLicenseById(int licenceId);
+    License GetLicenseById(Guid licenceId);
 
     List<Permission> GetAlPermissions();
 

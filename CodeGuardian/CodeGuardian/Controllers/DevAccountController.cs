@@ -8,12 +8,12 @@ namespace CodeGuardian.API.Controllers
 {
     [Route("api/")]
     [ApiController]
-    public class UserAccountController : Controller
+    public class DevAccountController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly IDevService _userService;
         private readonly IAuthService _auth;
 
-        public UserAccountController(IUserService userService, IAuthService authService)
+        public DevAccountController(IDevService userService, IAuthService authService)
         {
             this._userService = userService;
             this._auth = authService;

@@ -1,4 +1,6 @@
 ﻿using CodeGuardian.API.DTO;
+using CodeGuardian.DOMAIN.Entity.Application;
+using CodeGuardian.DOMAIN.Entity.Users.Dev;
 using CodeGuardian.DOMAINE.Entity;
 using CodeGuardian.DOMAINE.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -11,14 +13,14 @@ namespace CodeGuardian.API.Controllers
     public class AdministratorController : ControllerBase
     {
         private readonly IAdministratorService _administratorService;
-        private readonly IUserService _userService;
+        private readonly IDevService _userService;
         private readonly IApplicationService _applicationService;
         private readonly ILicenceService _licenceService;
         private readonly IPermissionService _permissionService;
 
         public AdministratorController(
             IAdministratorService administratorService,
-            IUserService userService,
+            IDevService userService,
             IApplicationService applicationService,
             ILicenceService licenceService,
             IPermissionService permissionService)
@@ -40,7 +42,7 @@ namespace CodeGuardian.API.Controllers
         {
             try
             {
-                List<User> users = _userService.GetAllUsers();
+                List<Dev> users = _userService.GetAllUsers();
 
                 return Ok(users);
             }
@@ -61,7 +63,7 @@ namespace CodeGuardian.API.Controllers
         {
             try
             {
-                User userToFind = _userService.GetAnUserByName(username);
+                Dev userToFind = _userService.GetAnUserByName(username);
 
                 return Ok(userToFind);
             }
@@ -82,11 +84,10 @@ namespace CodeGuardian.API.Controllers
         {
             try
             {
-                _administratorService.AddAnuser(new User()
+                _administratorService.AddAnUser(new Dev()
                 {
                     FirstName = userToAdd.FirstName,
                     LastName = userToAdd.LastName,
-                    IsAdmin = userToAdd.IsAdmin
                 });
 
                 return Ok();

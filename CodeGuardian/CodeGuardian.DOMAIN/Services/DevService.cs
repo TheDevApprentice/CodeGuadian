@@ -1,23 +1,24 @@
-using CodeGuardian.DOMAINE.Entity;
+using CodeGuardian.DOMAIN.Entity.Application;
+using CodeGuardian.DOMAIN.Entity.Users.Dev;
 using CodeGuardian.DOMAINE.Interfaces;
 
 namespace CodeGuardian.DOMAINE.Services;
 
-public class UserService : IUserService
+public class DevService : IDevService
 {
-    private IUserRepo _repoUser;
+    private IDevRepo _repoUser;
 
-    public UserService(IUserRepo userRepo)
+    public DevService(IDevRepo userRepo)
     {
         this._repoUser = userRepo;
     }
 
-    public List<User> GetAllUsers()
+    public List<Dev> GetAllUsers()
     {
         return _repoUser.GetAllUsers();
     }
 
-    public User GetAnUserByName(string userName)
+    public Dev GetAnUserByName(string userName)
     {
         if (userName == "")
         {
@@ -27,7 +28,7 @@ public class UserService : IUserService
         return _repoUser.GetAnUserByName(userName);
     }
 
-    public User GetuserByID(int id)
+    public Dev GetuserByID(int id)
     {
         if (_repoUser.GetUserByID((int)id) == null)
         {
@@ -46,7 +47,7 @@ public class UserService : IUserService
         return _repoUser.GetUserApplication((int)userId);
     }
 
-    List<Application> IUserService.CheckUserApplicationLicenceKey(int userId, int appid, string licenseKey)
+    List<Application> IDevService.CheckUserApplicationLicenceKey(int userId, int appid, string licenseKey)
     {
         return _repoUser.CheckUserApplicationLicenceKey((int)userId, appid, licenseKey);
     }

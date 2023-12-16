@@ -6,5 +6,7 @@ public interface ILicenceService
 {
     List<License> GetAllLicenses();
 
-    License GetLicenseById(int licenceId);
+    License CreateLicenceKey(License newLicence);
+
+    License GetLicenseById(Guid licenceId);
 }
