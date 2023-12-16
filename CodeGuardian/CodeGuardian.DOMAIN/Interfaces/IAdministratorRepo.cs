@@ -1,9 +1,11 @@
+using CodeGuardian.DOMAIN.Entity.Application;
+using CodeGuardian.DOMAIN.Entity.Users.Dev;
 using CodeGuardian.DOMAINE.Entity;
 namespace CodeGuardian.DOMAINE.Interfaces;
 
 public interface IAdministratorRepo
 {
-    User AddAnuser(User userToAdd);
+    Dev AddAnUser(Dev userToAdd);
 
     List<Application> GetAllApplication();
 
@@ -17,9 +19,9 @@ public interface IAdministratorRepo
 
     Permission GetPermissionById(int permissionId);
 
-    User GetUserByID(int id);
+    Dev GetUserByID(int id);
 
-    User GetAnUserByName(string employeeName);
+    Dev GetAnUserByName(string employeeName);
 
-    List<User> GetAllUsers();
+    List<Dev> GetAllUsers();
 }

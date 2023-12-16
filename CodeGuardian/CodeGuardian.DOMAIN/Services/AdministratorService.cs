@@ -1,3 +1,5 @@
+using CodeGuardian.DOMAIN.Entity.Application;
+using CodeGuardian.DOMAIN.Entity.Users.Dev;
 using CodeGuardian.DOMAINE.Entity;
 using CodeGuardian.DOMAINE.Interfaces;
 
@@ -6,7 +8,7 @@ namespace CodeGuardian.DOMAINE.Services
     public class AdministratorService : IAdministratorService
     {
         private IAdministratorRepo _administratorRepo;
-        private IUserRepo _userRepo;
+        private IDevRepo _userRepo;
 
         private IApplicationRepo _applicationRepo;
         private ILicenceRepo _licenceRepo;
@@ -16,7 +18,7 @@ namespace CodeGuardian.DOMAINE.Services
             IApplicationRepo applicationRepo,
             ILicenceRepo licenceRepo,
             IPermissionRepo permissionRepo,
-            IUserRepo userRepo)
+            IDevRepo userRepo)
         {
             this._administratorRepo = administratorRepo;
             this._applicationRepo = applicationRepo;
@@ -25,7 +27,7 @@ namespace CodeGuardian.DOMAINE.Services
             this._userRepo = userRepo;
         }
 
-        public User AddAnUser(User userToAdd)
+        public Dev AddAnUser(Dev userToAdd)
         {
             if (string.IsNullOrWhiteSpace(userToAdd.FirstName) ||
                 string.IsNullOrWhiteSpace(userToAdd.LastName))
@@ -34,12 +36,12 @@ namespace CodeGuardian.DOMAINE.Services
 
             }
 
-            return _administratorRepo.AddAnuser(userToAdd);
+            return _administratorRepo.AddAnUser(userToAdd);
         }
 
-        User IAdministratorService.AddAnuser(User userToAdd)
+        Dev IAdministratorService.AddAnUser(Dev userToAdd)
         {
-            return _administratorRepo.AddAnuser(userToAdd);
+            return _administratorRepo.AddAnUser(userToAdd);
         }
 
         List<Application> IAdministratorService.GetAllApplication()
@@ -52,7 +54,7 @@ namespace CodeGuardian.DOMAINE.Services
             return _licenceRepo.GetAllLicenses();
         }
 
-        List<User> IAdministratorService.GetAllUsers()
+        List<Dev> IAdministratorService.GetAllUsers()
         {
             return _userRepo.GetAllUsers();
         }
@@ -62,7 +64,7 @@ namespace CodeGuardian.DOMAINE.Services
             return _permissionRepo.GetAlPermissions();
         }
 
-        User IAdministratorService.GetAnUserByName(string username)
+        Dev IAdministratorService.GetAnUserByName(string username)
         {
             if (username == "")
             {
@@ -72,12 +74,12 @@ namespace CodeGuardian.DOMAINE.Services
             return _userRepo.GetAnUserByName(username);
         }
 
-        Application IAdministratorService.GetApplicationById(int id)
+        Application IAdministratorService.GetApplicationById(Guid id)
         {
             return _applicationRepo.GetApplicationById(id);
         }
 
-        License IAdministratorService.GetLicenseById(int licenceId)
+        License IAdministratorService.GetLicenseById(Guid licenceId)
         {
             return _licenceRepo.GetLicenseById(licenceId);
         }
@@ -87,7 +89,7 @@ namespace CodeGuardian.DOMAINE.Services
             return _permissionRepo.GetPermissionById(permissionId);
         }
 
-        User IAdministratorService.GetUserByID(int id)
+        Dev IAdministratorService.GetUserByID(int id)
         {
             if (_userRepo.GetUserByID((int)id) == null)
             {

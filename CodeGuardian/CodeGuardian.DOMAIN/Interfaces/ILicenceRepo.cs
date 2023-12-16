@@ -5,5 +5,7 @@ public interface ILicenceRepo
 {
     List<License> GetAllLicenses();
 
-    License GetLicenseById(int licenceId);
+    License GetLicenseById(Guid licenceId);
+
+    License AddCreatedLicenceKey(License newLicence);
 }

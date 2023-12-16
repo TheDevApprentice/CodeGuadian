@@ -36,8 +36,8 @@ builder.Services.AddAuthorization();
 builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter())).AddJsonOptions(option => option.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IUserRepo, UserRepo>();
+builder.Services.AddScoped<IDevService, DevService>();
+builder.Services.AddScoped<IDevRepo, DevRepo>();
 builder.Services.AddScoped<IAdministratorService, AdministratorService>();
 builder.Services.AddScoped<IAdministratorRepo, AdministratorRepo>();
 builder.Services.AddScoped<IApplicationService, ApplicationService>();
@@ -67,8 +67,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     // ...
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "CodeGuardianTestUI", Description = "Descritpiotn de l'api" ,Version = "v1" });
-   
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "CodeGuardianTestUI", Description = "Descritpiotn de l'api", Version = "v1" });
+
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "JWT Authorization header using the Bearer scheme",

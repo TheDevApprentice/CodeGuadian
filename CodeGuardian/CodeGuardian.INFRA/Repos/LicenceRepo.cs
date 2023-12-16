@@ -12,15 +12,20 @@ public class LicenceRepo : ILicenceRepo
         this._dbCodeGuardian = CodeGuardianDbContext;
     }
 
-    public List<License> GetAllLicenses()
+    public License AddCreatedLicenceKey(License newlicence)
+    {
+        _dbCodeGuardian.Licenses.Add(newlicence);
+        _dbCodeGuardian.SaveChanges();
+        return newlicence;
+    }
+
+    List<License> ILicenceRepo.GetAllLicenses()
     {
         return _dbCodeGuardian.Licenses.ToList();
     }
 
-    License ILicenceRepo.GetLicenseById(int id)
+    License ILicenceRepo.GetLicenseById(Guid id)
     {
-#pragma warning disable CS8603 // Existence possible d'un retour de référence null.
-        return _dbCodeGuardian.Licenses.FirstOrDefault(licence => licence.Id == id);
-#pragma warning restore CS8603 // Existence possible d'un retour de référence null.
+        return _dbCodeGuardian.Licenses.FirstOrDefault(licence => licence.Uuid == id);
     }
 }
