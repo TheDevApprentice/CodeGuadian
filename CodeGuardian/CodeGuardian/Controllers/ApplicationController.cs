@@ -9,12 +9,10 @@ namespace CodeGuardian.API.Controllers
     [ApiController]
     public class ApplicationController : Controller
     {
-        private readonly ILicenceService _licenceService;
         private readonly IApplicationService _applicationService;
 
-        public ApplicationController(ILicenceService licenceService, IApplicationService applicationService)
+        public ApplicationController(IApplicationService applicationService)
         {
-            this._licenceService = licenceService;
             this._applicationService = applicationService;
         }
 

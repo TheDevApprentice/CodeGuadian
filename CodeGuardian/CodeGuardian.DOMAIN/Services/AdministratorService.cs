@@ -36,12 +36,12 @@ namespace CodeGuardian.DOMAINE.Services
 
             }
 
-            return _administratorRepo.AddAnUser(userToAdd);
+            return _administratorRepo.AddADevelopper(userToAdd);
         }
 
-        Dev IAdministratorService.AddAnUser(Dev userToAdd)
+        Dev IAdministratorService.AddADevelopper(Dev userToAdd)
         {
-            return _administratorRepo.AddAnUser(userToAdd);
+            return _administratorRepo.AddADevelopper(userToAdd);
         }
 
         List<Application> IAdministratorService.GetAllApplication()

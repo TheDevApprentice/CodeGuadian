@@ -5,7 +5,7 @@ namespace CodeGuardian.DOMAINE.Interfaces;
 
 public interface IAdministratorRepo
 {
-    Dev AddAnUser(Dev userToAdd);
+    Dev AddADevelopper(Dev userToAdd);
 
     List<Application> GetAllApplication();
 

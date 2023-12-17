@@ -1,17 +1,26 @@
 using CodeGuardian.API.Controllers;
+using CodeGuardian.API.Logger;
 using CodeGuardian.DOMAINE.Interfaces;
 using CodeGuardian.DOMAINE.Services;
 using CodeGuardian.INFRA;
 using CodeGuardian.INFRA.Repos;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Serilog;
+using Serilog.Events;
+using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.Json.Serialization;
+using DotEnv;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
-string value = Environment.GetEnvironmentVariable("env");
+string value = Environment.GetEnvironmentVariable("ENVIRONMENT");
 
 Auth auth = new Auth();
 var result = auth.ExtractConfiguration($"SELECT value FROM SecurityConfiguration WHERE name = 'secretKey'");
@@ -36,6 +45,19 @@ builder.Services.AddAuthorization();
 builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter())).AddJsonOptions(option => option.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
+builder.Services.AddSingleton(new ExcelLoggerConfiguration
+{
+    FilePath = Environment.GetEnvironmentVariable("EXCEL_LOGGER_FILE_PATH") ?? "fichier.xlsx"
+});
+
+builder.Services.AddLogging(builder =>
+{
+    var serviceProvider = builder.Services.BuildServiceProvider();
+    builder.AddProvider(new ExcelLoggerProvider(serviceProvider.GetRequiredService<IOptions<ExcelLoggerConfiguration>>()));
+});
+
+builder.Services.AddScoped<IExcelLogger, ExcelLogger>();
+
 builder.Services.AddScoped<IDevService, DevService>();
 builder.Services.AddScoped<IDevRepo, DevRepo>();
 builder.Services.AddScoped<IAdministratorService, AdministratorService>();
@@ -44,30 +66,32 @@ builder.Services.AddScoped<IApplicationService, ApplicationService>();
 builder.Services.AddScoped<IApplicationRepo, ApplicationRepo>();
 builder.Services.AddScoped<IPermissionService, PermissionService>();
 builder.Services.AddScoped<IPermissionRepo, PermissionRepo>();
+builder.Services.AddScoped<IOrganisationService, OrganisationService>();
+builder.Services.AddScoped<IOrganisationRepo, OrganisationRepo>();
 builder.Services.AddScoped<ILicenceService, LicenceService>();
 builder.Services.AddScoped<ILicenceRepo, LicenceRepo>();
 
 if (value == "stage")
 {
-    builder.Services.AddDbContext<CodeGuardianDbContext>(options => options.UseSqlServer("Server=10.4.1.38,1433;Database=CodeGuardianDataBase;User id=sa;Pwd=yourStrong@0Password!;TrustServerCertificate=True"));
+    builder.Services.AddDbContext<CodeGuardianDbContext>(options => options.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION_STAGE")));
 }
 else if (value == "prod" || builder.Environment.IsProduction())
 {
-    builder.Services.AddDbContext<CodeGuardianDbContext>(options => options.UseSqlServer("Server=10.4.1.39,1433;Database=CodeGuardianDataBase;User id=sa;Pwd=yourStrong@0Password!;TrustServerCertificate=True"));
+    builder.Services.AddDbContext<CodeGuardianDbContext>(options => options.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTION_PROD")));
 }
 else
 {
     builder.Services.AddDbContext<CodeGuardianDbContext>(options => options.UseInMemoryDatabase("CodeGuardianDb"));
 }
 
-builder.Services.AddDbContext<CodeGuardianDbContext>(options => options.UseSqlServer("Server=10.4.1.38,1433;Database=CodeGuardianDataBase;User id=sa;Pwd=yourStrong@0Password!;TrustServerCertificate=True"));
-
-//Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    // ...
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "CodeGuardianTestUI", Description = "Descritpiotn de l'api", Version = "v1" });
+    string swaggerDescriptionFileName = $"SwaggerDescription.md";
+    string swaggerDescriptionContent = File.ReadAllText(swaggerDescriptionFileName);
+
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "CodeGuardianTestUI", Description = swaggerDescriptionContent, Version = "v1" });
+
 
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -95,8 +119,13 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
+app.UseCors(builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+});
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -116,11 +145,7 @@ if (value != "stage" || value != "prod")
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

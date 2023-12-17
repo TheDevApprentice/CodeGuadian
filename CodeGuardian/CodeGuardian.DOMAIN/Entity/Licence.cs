@@ -8,7 +8,7 @@ public class License
     [JsonIgnore]
     public int Id { get; set; }
 
-    public Guid Uuid { get; set; }
+    public Guid Uuid { get; set; } = Guid.NewGuid();
 
     public string Status { get; set; } = "Inactive";
 

@@ -1,4 +1,3 @@
-using CodeGuardian.API.DTO;
 using CodeGuardian.DOMAINE.Authentification;
 using CodeGuardian.DOMAINE.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -64,25 +63,6 @@ namespace CodeGuardian.API.Controllers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="userDTO"></param>
-        /// <returns></returns>
-        [HttpPost("user/account/create")]
-        public IActionResult CreateUserAccount([FromBody] UserDTO userDTO)
-        {
-            try
-            {
-
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
         [HttpGet("user/account/forgot/{email}")]
@@ -128,7 +108,7 @@ namespace CodeGuardian.API.Controllers
         /// <param name="userId"></param>
         /// <param name="email"></param>
         /// <returns></returns>
-        [Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "Admin,Dev")]
         [HttpDelete("user/account/{userId}/email/{email}")]
         public IActionResult DeleteUserAccount(int userId, string email)
         {

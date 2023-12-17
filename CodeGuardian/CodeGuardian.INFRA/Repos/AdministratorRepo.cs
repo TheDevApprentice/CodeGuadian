@@ -15,7 +15,7 @@ public class AdministratorRepo : IAdministratorRepo
         this._dbCodeGuardian = dbCodeGuardian;
     }
 
-    public Dev AddAnUser(Dev userToAdd)
+    public Dev AddADevelopper(Dev userToAdd)
     {
         Dev newuser = _dbCodeGuardian.Users.Add(new Dev()
         {

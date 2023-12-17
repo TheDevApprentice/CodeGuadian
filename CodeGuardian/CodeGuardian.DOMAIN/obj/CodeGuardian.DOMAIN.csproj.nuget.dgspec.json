@@ -45,6 +45,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "DotEnv": {
+              "target": "Package",
+              "version": "[0.0.1.1, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.8.1, )"
@@ -70,6 +74,14 @@
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.3.1, )"
+            },
+            "Serilog.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Serilog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Swashbuckle.AspNetCore.SwaggerGen": {
               "target": "Package",

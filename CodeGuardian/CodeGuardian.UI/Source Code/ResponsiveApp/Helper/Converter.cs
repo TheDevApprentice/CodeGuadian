@@ -9,7 +9,7 @@ using System.Globalization;
 using System.Windows.Data;
 
 namespace ResponsiveApp.Helper
-{   
+{
     // IsLessThanConverter //
     public class IsLessThanConverter : IValueConverter
     {

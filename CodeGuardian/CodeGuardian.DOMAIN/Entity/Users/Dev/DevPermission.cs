@@ -8,7 +8,7 @@ public class DevPermission
     [JsonIgnore]
     public int DevId { get; set; }
 
-    public Guid DevPermissionUuid { get; set; }
+    public Guid DevPermissionUuid { get; set; } = Guid.NewGuid();
 
     public int PermissionId { get; set; }
 

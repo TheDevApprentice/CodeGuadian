@@ -30,11 +30,14 @@ namespace CodeGuardian.INFRA
 
         public DbSet<PowerUser> PowerUsers { get; set; }
         public DbSet<PowerUserAdmins> PowerUsersAdmins { get; set; }
+        public DbSet<PowerUserDevs> PowerUsersDevs { get; set; }
+
         public DbSet<PowerUserApplication> PowerUsersApplications { get; set; }
 
         public DbSet<Organisation> Organisations { get; set; }
         public DbSet<OrganisationAdmin> OrganisationAdmin { get; set; }
         public DbSet<OrganisationApplication> OrganisationApplication { get; set; }
+        public DbSet<OrganisationDevs> OrganisationDevs { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -72,13 +75,14 @@ namespace CodeGuardian.INFRA
                 .WithMany()
                 .HasForeignKey(up => up.LicenceID);
 
-
-
             // Organisation table
             modelBuilder.Entity<Organisation>().HasKey(k => k.Id);
             modelBuilder.Entity<Organisation>()
                 .Property(p => p.Id)
                 .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Organisation>()
+                .Property(p => p.Uuid)
+                .IsRequired();
             modelBuilder.Entity<Organisation>()
                 .Property(p => p.FirstName)
                 .IsRequired();
@@ -100,6 +104,10 @@ namespace CodeGuardian.INFRA
                 .HasForeignKey(up => up.OrganisationId);
             modelBuilder.Entity<Organisation>()
                 .HasMany(u => u.OrganisationApplications)
+                .WithOne(up => up.Organisation)
+                .HasForeignKey(up => up.OrganisationId);
+            modelBuilder.Entity<Organisation>()
+                .HasMany(u => u.OrganisationDevs)
                 .WithOne(up => up.Organisation)
                 .HasForeignKey(up => up.OrganisationId);
 
@@ -131,12 +139,28 @@ namespace CodeGuardian.INFRA
                 .WithMany()
                 .HasForeignKey(up => up.ApplicationId);
 
+            // PowerUserAdmin table
+            modelBuilder.Entity<OrganisationDevs>().HasKey(up => new { up.OrganisationId, up.DevelopperId });
+            modelBuilder.Entity<OrganisationDevs>()
+                .HasOne(up => up.Organisation)
+                .WithMany(u => u.OrganisationDevs)
+                .HasForeignKey(up => up.OrganisationId);
+            modelBuilder.Entity<OrganisationDevs>()
+                .Property(p => p.OrganisationId)
+                .IsRequired();
+            modelBuilder.Entity<OrganisationDevs>()
+                .HasOne(up => up.Developper)
+                .WithMany()
+                .HasForeignKey(up => up.DevelopperId);
 
             // PowerUser table
             modelBuilder.Entity<PowerUser>().HasKey(k => k.Id);
             modelBuilder.Entity<PowerUser>()
                 .Property(p => p.Id)
                 .ValueGeneratedOnAdd();
+            modelBuilder.Entity<PowerUser>()
+                .Property(p => p.Uuid)
+                .IsRequired();
             modelBuilder.Entity<PowerUser>()
                 .Property(p => p.FirstName)
                 .IsRequired();
@@ -160,7 +184,10 @@ namespace CodeGuardian.INFRA
                 .HasMany(u => u.PowerUserApplications)
                 .WithOne(up => up.PowerUser)
                 .HasForeignKey(up => up.PowerUserId);
-
+            modelBuilder.Entity<PowerUser>()
+                .HasMany(u => u.PowerUserDevs)
+                .WithOne(up => up.Poweruser)
+                .HasForeignKey(up => up.PowerUserId);
 
             // PowerUserAdmin table
             modelBuilder.Entity<PowerUserAdmins>().HasKey(up => new { up.PowerUserId, up.AdmininistatorId });
@@ -190,21 +217,19 @@ namespace CodeGuardian.INFRA
                 .WithMany()
                 .HasForeignKey(up => up.ApplicationId);
 
-
-            // Application table
-            modelBuilder.Entity<Application>().HasKey(k => k.Id);
-            modelBuilder.Entity<Application>()
-                .Property(p => p.Id)
-                .ValueGeneratedOnAdd();
-            modelBuilder.Entity<License>()
-                .Property(p => p.Uuid)
+            // PowerUserAdmin table
+            modelBuilder.Entity<PowerUserDevs>().HasKey(up => new { up.PowerUserId, up.DevelopperId });
+            modelBuilder.Entity<PowerUserDevs>()
+                .HasOne(up => up.Poweruser)
+                .WithMany(u => u.PowerUserDevs)
+                .HasForeignKey(up => up.PowerUserId);
+            modelBuilder.Entity<PowerUserDevs>()
+                .Property(p => p.PowerUserId)
                 .IsRequired();
-            modelBuilder.Entity<Application>()
-                .Property(p => p.Name)
-                .IsRequired();
-            modelBuilder.Entity<Application>()
-                .Property(p => p.Description)
-                .IsRequired();
+            modelBuilder.Entity<PowerUserDevs>()
+                .HasOne(up => up.Developper)
+                .WithMany()
+                .HasForeignKey(up => up.DevelopperId);
 
             // License table
             modelBuilder.Entity<License>().HasKey(k => k.Id);
@@ -222,6 +247,9 @@ namespace CodeGuardian.INFRA
             modelBuilder.Entity<Dev>()
                 .Property(p => p.Id)
                 .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Dev>()
+                .Property(p => p.Uuid)
+                .IsRequired();
             modelBuilder.Entity<Dev>()
                 .Property(p => p.FirstName)
                 .IsRequired();
@@ -256,6 +284,9 @@ namespace CodeGuardian.INFRA
                 .Property(p => p.Id)
                 .ValueGeneratedOnAdd();
             modelBuilder.Entity<Permission>()
+                .Property(p => p.Uuid)
+                .IsRequired();
+            modelBuilder.Entity<Permission>()
                 .Property(p => p.Name)
                 .IsRequired();
 
@@ -289,11 +320,24 @@ namespace CodeGuardian.INFRA
                 new DevPermission() { DevId = 2, PermissionId = 2 }
             );
 
+            // Application table
+            modelBuilder.Entity<Application>().HasData(
+                new Application() { Id = 1, Name = "App1", Description = "Description1" },
+                new Application() { Id = 2, Name = "App2", Description = "Description2" }
+            );
+
             // Licence table
             modelBuilder.Entity<License>().HasData(
-                new License() { Id = 1, Uuid = Guid.NewGuid(), ApplicationId = 1, KeyHash = "LicenseKey1" },
-                new License() { Id = 2, Uuid = Guid.NewGuid(), ApplicationId = 1, KeyHash = "LicenseKey2" }
+                new License() { Id = 1, ApplicationId = 1, KeyHash = "LicenseKey1" },
+                new License() { Id = 2, ApplicationId = 1, KeyHash = "LicenseKey2" }
             );
+
+            //// ApplicationLicences table
+            //modelBuilder.Entity<ApplicationLicences>().HasData(
+            //    new ApplicationLicences() { ApplicationId = 1, LicenceID = 1 },
+            //    new ApplicationLicences() { ApplicationId = 1, LicenceID = 2 }
+            //);
+
             // OrganisationAdmin table
             modelBuilder.Entity<OrganisationAdmin>().HasData(
                 new OrganisationAdmin() { AdminId = 1, OrganisationId = 1 },
@@ -330,17 +374,7 @@ namespace CodeGuardian.INFRA
                 new PowerUserApplication() { ApplicationId = 2, PowerUserId = 2 }
             );
 
-            // Application table
-            modelBuilder.Entity<Application>().HasData(
-                new Application() { Id = 1, Uuid = Guid.NewGuid(), Name = "App1", Description = "Description1" },
-                new Application() { Id = 2, Uuid = Guid.NewGuid(), Name = "App2", Description = "Description2" }
-            );
 
-            //// ApplicationLicences table
-            //modelBuilder.Entity<ApplicationLicences>().HasData(
-            //    new ApplicationLicences() { ApplicationId = 1, LicenceID = 1 },
-            //    new ApplicationLicences() { ApplicationId = 1, LicenceID = 2 }
-            //);
 
             base.OnModelCreating(modelBuilder);
         }

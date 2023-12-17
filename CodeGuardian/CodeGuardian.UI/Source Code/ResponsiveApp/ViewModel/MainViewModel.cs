@@ -5,8 +5,8 @@
 /// </Summary>   
 
 using System.ComponentModel;
-using System.Windows.Input;
 using System.Windows;
+using System.Windows.Input;
 
 namespace ResponsiveApp.ViewModel
 {

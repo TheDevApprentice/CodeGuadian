@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CodeGuardian.DOMAIN")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< Updated upstream
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aba24b9ecf4b5cb05b3e2d28d6b40b91ba2b3849")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f9a3f040062f4df16a1617d36d093dffc15fb07")]
->>>>>>> Stashed changes
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f2fffe2e99bdf7d92ffb91834fb209f6ea292ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("CodeGuardian.DOMAIN")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CodeGuardian.DOMAIN")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

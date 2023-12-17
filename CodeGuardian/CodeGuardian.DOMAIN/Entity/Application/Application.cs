@@ -12,7 +12,7 @@ public class Application
     [JsonIgnore]
     public int Id { get; set; }
 
-    public Guid Uuid { get; set; }
+    public Guid Uuid { get; set; } = Guid.NewGuid();
 
     public string Name { get; set; }
 

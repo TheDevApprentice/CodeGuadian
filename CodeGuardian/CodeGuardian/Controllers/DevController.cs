@@ -1,4 +1,3 @@
-using CodeGuardian.DOMAIN.Entity.Application;
 using CodeGuardian.DOMAIN.Entity.Users.Dev;
 using CodeGuardian.DOMAINE.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -22,25 +21,6 @@ namespace CodeGuardian.API.Controllers
         }
 
         /// <summary>
-        /// Route to get all users
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("users")]
-        [Authorize(Roles = "Admin,User")]
-        public IActionResult GetAllUsers()
-        {
-            try
-            {
-                List<Dev> users = _userService.GetAllUsers();
-                return Ok(users);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message);
-            }
-        }
-
-        /// <summary>
         /// Route to get user by id
         /// </summary>
         /// <param name="userId"></param>
@@ -60,67 +40,26 @@ namespace CodeGuardian.API.Controllers
             }
         }
 
-        /// <summary>
-        /// Route to get all user applications
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        [HttpGet("user/{userId}/applications")]
-        [Authorize(Roles = "Admin,User")]
-        public IActionResult GetUserApplications(int userId)
-        {
-            try
-            {
-                List<Application> userApplications = _userService.GetUserApplications(userId);
-                return Ok(userApplications);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message);
-            }
-        }
-
-        /// <summary>
-        /// Route to allow an user to register to an app
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="appid"></param>
-        /// <returns></returns>
-        [HttpPost("user/{userId}/application/register/{appid}")]
-        [Authorize(Roles = "Admin,User")]
-        public IActionResult RegisterForApp(int userId, Guid appUuid)
-        {
-            try
-            {
-                List<Application> userApplications = _userService.GetUserApplications(userId); // a changer
-                return Ok(userApplications);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message);
-            }
-        }
-
-        /// <summary>
-        /// Route to verify the user application licence key
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="appid"></param>
-        /// <param name="licenseKey"></param>
-        /// <returns></returns>
-        [HttpGet("user/{userId}/application/{appid}/verify/licencekey/{licenseKey}")]
-        [Authorize(Roles = "Admin,User")]
-        public IActionResult CheckUserApplicationLicenceKey(int userId, int appid, string licenseKey)
-        {
-            try
-            {
-                List<Application> userApplications = _userService.CheckUserApplicationLicenceKey(userId, appid, licenseKey);
-                return Ok(userApplications);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message);
-            }
-        }
+        ///// <summary>
+        ///// Route to verify the user application licence key
+        ///// </summary>
+        ///// <param name="userId"></param>
+        ///// <param name="appid"></param>
+        ///// <param name="licenseKey"></param>
+        ///// <returns></returns>
+        //[HttpGet("user/{userId}/application/{appid}/verify/licencekey/{licenseKey}")]
+        //[Authorize(Roles = "Admin,User")]
+        //public IActionResult CheckUserApplicationLicenceKey(int userId, int appid, string licenseKey)
+        //{
+        //    try
+        //    {
+        //        List<Application> userApplications = _userService.CheckUserApplicationLicenceKey(userId, appid, licenseKey);
+        //        return Ok(userApplications);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return StatusCode(500, e.Message);
+        //    }
+        //}
     }
 }

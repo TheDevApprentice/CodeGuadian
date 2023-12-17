@@ -45,6 +45,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "DotEnv": {
+              "target": "Package",
+              "version": "[0.0.1.1, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.8.1, )"
@@ -78,6 +82,14 @@
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.6.0, )"
+            },
+            "Serilog.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Serilog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

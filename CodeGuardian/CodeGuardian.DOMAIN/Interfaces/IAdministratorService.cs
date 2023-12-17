@@ -5,7 +5,7 @@ namespace CodeGuardian.DOMAINE.Interfaces;
 
 public interface IAdministratorService
 {
-    Dev AddAnUser(Dev userToAdd);
+    Dev AddADevelopper(Dev userToAdd);
 
     Dev GetUserByID(int id);
 
